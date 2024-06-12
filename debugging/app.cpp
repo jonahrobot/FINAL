@@ -14,7 +14,6 @@ void App::run() {
     menu.handleUserInput(choice);
     if (choice == 1) {
       menu.display();
-      continue;
     } else if (choice == 4) {
       break;
     }
