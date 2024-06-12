@@ -1,5 +1,5 @@
 CMakeFiles/main.dir/src/random_image.cpp.o: \
- /home/jonahrobot/final/final_exam_coding_portion-1/auxiliary/src/random_image.cpp \
+ /home/jonahrobot/FINAL/auxiliary/src/random_image.cpp \
  /usr/include/stdc-predef.h /usr/include/png.h /usr/include/pnglibconf.h \
  /usr/include/pngconf.h /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \

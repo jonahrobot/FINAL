@@ -8,7 +8,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(PNG REQUIRED)
 include_directories(${PNG_INCLUDE_DIR})
 
-# Add executable
+# Add executables
 add_executable(${PROJECT_NAME}
     src/main.cpp
     src/random_image.cpp
