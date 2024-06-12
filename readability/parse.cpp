@@ -19,19 +19,17 @@ int parseInt_OLD(const std::string &intString, const Format &format) {
 
     switch (format) {
       case BINARY:
-        parseBinary(currentCharacter, accumulator);
+        accumulator = AddBinaryValue(currentCharacter, accumulator);
         break;
 
       case UNSIGNED_DECIMAL:
-        parseDecimal(currentCharacter, accumulator);
-        break;
-
+        if (currentCharacter == '-') continue;
       case SIGNED_DECIMAL:
-        parseDecimal(currentCharacter,accumulator);
+        accumulator = AddDecimalValue(currentCharacter,accumulator);
         break;
 
       case HEXADECIMAL:
-        parseHexadecimal(currentCharacter, accumulator);
+        accumulator = AddHexValue(currentCharacter, accumulator);
         break;
         
       default:
@@ -39,41 +37,47 @@ int parseInt_OLD(const std::string &intString, const Format &format) {
     }
   }
 
+  if (negative) {
+    accumulator = -accumulator;
+  }
   // if negative, return negative, otherwise return positve
-  return negative ? -accumulator : accumulator;
+  return accumulator;
 }
 
-void parseHexadecimal(const char ch, int &accumulator)
+int AddHexValue(const char currentCharacter, const int accumulator)
 {
-  if (!((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'f') ||
-        (ch >= 'A' && ch <= 'F')))
+  if (!((currentCharacter >= '0' && currentCharacter <= '9') || (currentCharacter >= 'a' && currentCharacter <= 'f') ||
+        (currentCharacter >= 'A' && currentCharacter <= 'F')))
     throw SyntaxError();
 
-  int currentIntValue = (ch >= '0' && ch <= '9')   ? (ch - '0')
-         : (ch >= 'a' && ch <= 'f') ? (ch - 'a' + 10)
-                                    : (ch - 'A' + 10);
-  accumulator *= 16; // 16 for hexadecimal
-  accumulator += currentIntValue;
+  int currentIntValue = (currentCharacter >= '0' && currentCharacter <= '9')   ? (currentCharacter - '0')
+         : (currentCharacter >= 'a' && currentCharacter <= 'f') ? (currentCharacter - 'a' + 10)
+                                    : (currentCharacter - 'A' + 10);
+  int accumulatorShifted = accumulator * 16; // 16 for hexadecimal
+  int accumulatorNewValue = accumulator + currentIntValue;
   // std::cout << "test again" << std::endl;
+  return accumulatorNewValue;
 }
 
-void parseDecimal(const char ch, int &accumulator)
+int AddDecimalValue(const char currentCharacter, const int accumulator)
 {
-  if (!((ch >= '0' && ch <= '9')))
+  if (!((currentCharacter >= '0' && currentCharacter <= '9')))
     throw SyntaxError();
-  int currentIntValue = ch - '0';
-  accumulator *= 10; // 10 for decimal
-  accumulator += currentIntValue;
+  int currentIntValue = currentCharacter - '0';
+  int accumulatorShifted = accumulator * 10; // 10 for decimal
+  int accumulatorNewValue = accumulator + currentIntValue;
+  return accumulatorNewValue;
 }
 
 
-void parseBinary(const char ch, int &accumulator)
+int AddBinaryValue(const char currentCharacter, const int accumulator)
 {
-  if (!(ch == '0' || ch == '1'))
+  if (!(currentCharacter == '0' || currentCharacter == '1'))
     throw SyntaxError();
-  int currentIntValue = ch - '0';
-  accumulator *= 2; // 2 for binary
-  accumulator += currentIntValue;
+  int currentIntValue = currentCharacter - '0';
+  int accumulatorShifted = accumulator * 2; // 2 for binary
+  int accumulatorNewValue = accumulator + currentIntValue;
+  return accumulatorNewValue;
 }
 
 int parseInt(const std::string &intString, const Format &format) {
