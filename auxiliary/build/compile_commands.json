@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/jonahrobot/final/final_exam_coding_portion-1/auxiliary/build",
+  "command": "/usr/bin/c++    -o CMakeFiles/main.dir/src/main.cpp.o -c /home/jonahrobot/final/final_exam_coding_portion-1/auxiliary/src/main.cpp",
+  "file": "/home/jonahrobot/final/final_exam_coding_portion-1/auxiliary/src/main.cpp"
+},
+{
+  "directory": "/home/jonahrobot/final/final_exam_coding_portion-1/auxiliary/build",
+  "command": "/usr/bin/c++    -o CMakeFiles/main.dir/src/random_image.cpp.o -c /home/jonahrobot/final/final_exam_coding_portion-1/auxiliary/src/random_image.cpp",
+  "file": "/home/jonahrobot/final/final_exam_coding_portion-1/auxiliary/src/random_image.cpp"
+}
+]

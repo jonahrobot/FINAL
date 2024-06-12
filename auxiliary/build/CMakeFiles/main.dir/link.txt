@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/main.dir/src/main.cpp.o CMakeFiles/main.dir/src/random_image.cpp.o -o main  /usr/lib/x86_64-linux-gnu/libpng.so 
