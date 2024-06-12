@@ -4,7 +4,7 @@
 
 #include "parse.h"
 
-int parseInt(const std::string &intString, const Format &format) {
+int parseInt_OLD(const std::string &intString, const Format &format) {
   if (intString.size() == 0) throw SyntaxError();
   if (intString.size() == 1 && intString[0] == '-') throw SyntaxError();
 
@@ -62,4 +62,8 @@ int parseInt(const std::string &intString, const Format &format) {
 
   // if negative, return negative, otherwise return positve
   return negative ? -accumulator : accumulator;
+}
+
+int parseInt(const std::string &intString, const Format &format) {
+  
 }
